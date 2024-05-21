@@ -16,7 +16,7 @@ class HomeController extends AbstractController
     {
 
     $allMatos = $matosRepository->findAll();
-     dd($allMatos);
+     // dd($allMatos);
 
         return $this->render('home.html.twig', [
             'materiels' => $allMatos
