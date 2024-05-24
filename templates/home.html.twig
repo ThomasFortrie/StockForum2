@@ -12,6 +12,9 @@
 			<th scope="col">Quantité</th>
 			<th scope="col">Dernière Maj</th>
 			<th scope="col">Modif par</th>
+			<th scope="col">Ajouter 1</th>
+			<th scope="col">Enlever 1</th>
+			<th scope="col">Supprimer</th>
 
 		</tr>
 
@@ -20,11 +23,19 @@
 
 		{% for matos in materiels %}
 			<tr>
-				
+
 				<td>{{ matos.nom }}</td>
-				<td>{{ matos.quantite }}</td>
+				<td>
+					<p class="numberQ">{{ matos.quantite }}</p>
+				</td>
 				<td>{{ matos.majDate|date('d-m-Y') }}</td>
 				<td>{{ matos.lastModif }}</td>
+				<td><img src="{{ asset('images/+1.png') }}" width="40" height="40" class="" alt="">
+				</td>
+				<td><img src="{{ asset('images/-1.png') }}" width="40" height="40" class="" alt="">
+				</td>
+				<td><img src="{{ asset('images/supprimer.png') }}" width="40" height="40" class="" alt="">
+				</td>
 			</tr>
 		</th>
 	</tbody>
