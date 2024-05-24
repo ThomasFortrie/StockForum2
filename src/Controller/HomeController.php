@@ -24,7 +24,8 @@ class HomeController extends AbstractController
             'materiels' => $allMatos
         ]);
     }
-
+    
+    // AJOUT PLUS UN A LA QUANTITE
     #[Route('/plus/{id}', name: 'plusOne', requirements: ['id' => '\d+'])]
     public function updatePlusOne(EntityManagerInterface $entityManager, int $id): Response
     {
@@ -35,12 +36,14 @@ class HomeController extends AbstractController
                 'Materiel innexistant ! Probleme !'
             );
         }
-        $q = $product->getQuantite() +1 ;
+        $q = $product->getQuantite() + 1;
         $product->setQuantite($q);
         $entityManager->flush();
 
         return $this->redirectToRoute('app_home');
     }
+
+    // RETIRE UN A LA QUANTITE
     #[Route('/moins/{id}', name: 'minusOne', requirements: ['id' => '\d+'])]
     public function updateMinusOne(EntityManagerInterface $entityManager, int $id): Response
     {
@@ -51,8 +54,26 @@ class HomeController extends AbstractController
                 'Materiel innexistant ! Probleme !'
             );
         }
-        $q = $product->getQuantite() -1 ;
+        $q = $product->getQuantite() - 1;
         $product->setQuantite($q);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_home');
+    }
+
+    // SUPPRIME LE MATERIEL
+    #[Route('/suppr/{id}', name: 'supprOne', requirements: ['id' => '\d+'])]
+    public function supprOne(EntityManagerInterface $entityManager, int $id): Response
+    {
+        $product = $entityManager->getRepository(Matos::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'Materiel innexistant ! Probleme !'
+            );
+        }
+
+        $entityManager->remove($product);
         $entityManager->flush();
 
         return $this->redirectToRoute('app_home');
