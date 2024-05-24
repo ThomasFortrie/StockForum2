@@ -41,4 +41,20 @@ class HomeController extends AbstractController
 
         return $this->redirectToRoute('app_home');
     }
+    #[Route('/moins/{id}', name: 'minusOne', requirements: ['id' => '\d+'])]
+    public function updateMinusOne(EntityManagerInterface $entityManager, int $id): Response
+    {
+        $product = $entityManager->getRepository(Matos::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'Materiel innexistant ! Probleme !'
+            );
+        }
+        $q = $product->getQuantite() -1 ;
+        $product->setQuantite($q);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_home');
+    }
 }
