@@ -61,6 +61,19 @@ class HomeController extends AbstractController
         return $this->redirectToRoute('app_home');
     }
 
+    // Création d'un matériel
+    #[Route('creer', name: 'creerOne')]
+    public function creerOne() {
+        
+    }
+
+    //Edition de materiel
+
+    #[Route('edit/{id}', name: 'editOne', requirements: ['id' => '\d+'])]
+    public function editOne(Matos $matos, Request $request, EntityManagerInterface $em) {
+
+    }
+
     // SUPPRIME LE MATERIEL
     #[Route('/suppr/{id}', name: 'supprOne', requirements: ['id' => '\d+'])]
     public function supprOne(EntityManagerInterface $entityManager, int $id): Response
