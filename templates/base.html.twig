@@ -34,11 +34,12 @@
   margin: 0;
   padding: 0;">
 		{% block body %}{% endblock %}
+		{% block form %}{% endblock %}
 	</body>
 	{% block footer %}
 		<footer
 			class="wrapper bg-body-tertiary text-center text-lg-start bg-dark-subtle text-dark-emphasis"
-      style="position: absolute; bottom: 0; left: 0; right: 0;">
+      style="">
 			<!-- Grid container -->
 			<div
 				class="container p-4">
@@ -55,4 +56,5 @@
 			<!-- Copyright -->
 		</footer>
 	{% endblock %}
+	
 </html>
