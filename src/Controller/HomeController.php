@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Matos;
+use App\Form\MatosType;
 use App\Repository\MatosRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,12 +17,14 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(MatosRepository $matosRepository): Response
     {
+        $form = $this->createForm(MatosType::class);
 
         $allMatos = $matosRepository->findAll();
         // dd($allMatos);
 
         return $this->render('home.html.twig', [
-            'materiels' => $allMatos
+            'materiels' => $allMatos,
+            'form' => $form
         ]);
     }
     
@@ -64,7 +67,7 @@ class HomeController extends AbstractController
     // Création d'un matériel
     #[Route('creer', name: 'creerOne')]
     public function creerOne() {
-        
+
     }
 
     //Edition de materiel
