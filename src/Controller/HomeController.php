@@ -7,17 +7,31 @@ use App\Form\MatosType;
 use App\Repository\MatosRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\BrowserKit\Request;
-use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
-    public function index(MatosRepository $matosRepository): Response
+    #[Route('/', name: 'app_home', methods:['GET', 'POST'])]
+    public function index(MatosRepository $matosRepository, Request $request ,EntityManagerInterface $em): Response
     {
+        $matosCreated = new Matos();
+
         $form = $this->createForm(MatosType::class);
+        $form->handleRequest($request);
+
+        if($request->isMethod('POST')){
+        //    $form->submit($request->getPayload()->get($form->getName()));
+
+            if($form->isSubmitted() && $form->isValid()){
+                $matosCreated = $form->getData();
+                $em->persist($matosCreated);
+                $em->flush($matosCreated);
+
+                return $this->redirectToRoute('app_home');
+            }
+        }
 
         $allMatos = $matosRepository->findAll();
         // dd($allMatos);

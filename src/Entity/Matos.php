@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MatosRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraint as Assert;
 
 #[ORM\Entity(repositoryClass: MatosRepository::class)]
 class Matos
@@ -14,6 +15,7 @@ class Matos
     #[ORM\Column]
     private ?int $id = null;
 
+    
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 

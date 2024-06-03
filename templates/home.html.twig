@@ -32,13 +32,14 @@
 					<td>{{ matos.majDate|date('d-m-Y') }}</td>
 					<td>{{ matos.lastModif }}</td>
 					<td>
-						<a href="{{ url('plusOne', {id: matos.id}) }}">
-							<img src="{{ asset('images/+1.png') }}" width="40" height="40" class="" alt="">
-						</a>
-					</td>
-					<td>
 						<a href="{{ url('minusOne', {id: matos.id}) }}">
 							<img src="{{ asset('images/-1.png') }}" width="40" height="40" class="" alt="">
+						</a>
+
+					</td>
+					<td>
+						<a href="{{ url('plusOne', {id: matos.id}) }}">
+							<img src="{{ asset('images/+1.png') }}" width="40" height="40" class="" alt="">
 						</a>
 					</td>
 					<td>
@@ -51,9 +52,7 @@
 			</th>
 		{% endfor %}
 	</tbody>
-</table></tbody>{% endblock %}{% block form %}
-<div class="d-flex flex-row mb-3 justify-content-end" style="width: 70%;">Création d'un matériel</div>
-<div class=" d-flex flex-row mb-3 justify-content-end" style="width: 70%;">
+</table></tbody>{% endblock %}{% block form %}<div class="d-flex flex-row mb-3 justify-content-end" style="width: 70%;">Création d'un matériel</div><div class=" d-flex flex-row mb-3 justify-content-end" style="width: 70%;">
 <div class="p-2 flex-fill"></div>
 
 <div class="p-2 flex-fill"></div>
