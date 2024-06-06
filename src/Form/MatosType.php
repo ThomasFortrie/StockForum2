@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Matos;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +19,12 @@ class MatosType extends AbstractType
           //  ->add('majDate', null, [
             //    'widget' => 'single_text',
           //  ])
-            //->add('lastModif')
+            ->add('lastModif', ChoiceType::class, [
+                'choices' => [
+                    'Thomas' => 'Thomas',
+                    'Pierre Luc' => 'Pierre Luc'
+                ]
+            ])
             ->add('save', SubmitType::class,[
                 'label' => 'Soumettre'
             ])
