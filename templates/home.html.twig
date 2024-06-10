@@ -21,7 +21,7 @@
 					<th scope="col">NOM</th>
 					<th scope="col">Quantité</th>
 					<th scope="col">Dernière Maj</th>
-					<th scope="col">Modif par</th>
+					<th scope="col">Créé / Modif par</th>
 					<th scope="col">Ajouter 1</th>
 					<th scope="col">Enlever 1</th>
 					<th scope="col">Supprimer</th>
@@ -68,5 +68,7 @@
 
 <div class="p-2 flex-fill"></div>
 <div class="px-4 pt-1 flex-xl-fill mb-3" style="background-color: rgb(229, 212, 196); border-radius: 30px;">
-	{{ form_start(form) }}{{ form_end(form) }}
+	{{ form_start(form) }}
+	
+	{{ form_end(form) }}
 </div></div>{% endblock %}

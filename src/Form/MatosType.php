@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Matos;
+use PhpParser\Node\Stmt\Label;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -23,7 +24,7 @@ class MatosType extends AbstractType
                 'choices' => [
                     'Thomas' => 'Thomas',
                     'Pierre Luc' => 'Pierre Luc'
-                ]
+                ], 'label' => 'Utilisateur'
             ])
             ->add('save', SubmitType::class,[
                 'label' => 'Soumettre'
